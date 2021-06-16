@@ -1,10 +1,7 @@
 package com.souq.pages;
 
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
@@ -27,7 +24,7 @@ public class SearchResultsPage extends PageBase {
 
 	@FindBy(xpath="//li[contains(text(),'Items found' )]")
 	public WebElement itemSearchExist;
-	
+
 	@FindBy(xpath="//li[contains(@class,'crumbs' )]/h1")
 	public WebElement searchResultTitle;
 
@@ -39,7 +36,7 @@ public class SearchResultsPage extends PageBase {
 	public String checkSearchTitle() {
 		return searchResultTitle.getText();
 	}
-	
+
 	public List<Product> getResult() {
 		List<WebElement> productList = searchTableResults.findElements(By.xpath("./child::*")); // creating a list of the search results
 		List<Product> productItems = new ArrayList<Product>(); // creating a list to add items in with iteration
@@ -61,7 +58,7 @@ public class SearchResultsPage extends PageBase {
 		Gson gson = new Gson(); // using gson library to extract array list into JSON file
 		String json = gson.toJson(getResult());
 		try {
-			FileWriter file = new FileWriter("D:\\/output.json"); // giving the path to extract the file
+			FileWriter file = new FileWriter("D:\\/output.json"); // giving the path to extract the file on local
 			file.write(json);
 			file.close();
 		} catch (IOException e) {

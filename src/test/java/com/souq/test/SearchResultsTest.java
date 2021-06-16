@@ -29,7 +29,6 @@ public class SearchResultsTest extends TestBase {
 		Assert.assertTrue(searchResultObject.checkSearchTitle().contains(productName));
 		searchResultObject.getResult();
 		searchResultObject.extractList();
-
 	}
 
 }
